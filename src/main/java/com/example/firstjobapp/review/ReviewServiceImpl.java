@@ -71,16 +71,24 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review updateReview(Long companyId, Long reviewId, Review review) {
-        Optional<Review> review1=reviewRepository.findById(reviewId);
-        if(review1.isPresent()){
-            Review updatedReview=review1.get();
-            updatedReview.setReviewTitle(review.getReviewTitle());
-            updatedReview.setReviewContent(review.getReviewContent());
-            updatedReview.setReviewRating(review.getReviewRating());
-            reviewRepository.save(updatedReview);
-            return updatedReview;
+    public Boolean updateReview(Long companyId, Long reviewId, Review review) {
+//        Optional<Review> review1=reviewRepository.findById(reviewId);
+//        if(review1.isPresent()){
+//            Review updatedReview=review1.get();
+//            updatedReview.setReviewTitle(review.getReviewTitle());
+//            updatedReview.setReviewContent(review.getReviewContent());
+//            updatedReview.setReviewRating(review.getReviewRating());
+//            reviewRepository.save(updatedReview);
+//            return updatedReview;
+//        }
+//        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if(companyService.getCompanyById(companyId)!=null){
+            Company company = companyService.getCompanyById(companyId);
+            review.setCompanyToReview(company);
+            review.setReviewId(reviewId);
+            reviewRepository.save(review);
+            return true;
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return false;
     }
 }

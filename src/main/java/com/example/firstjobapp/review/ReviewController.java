@@ -39,9 +39,13 @@ public class ReviewController {
     }
 
     @PutMapping("/admin/companies/{companyId}/reviews/{reviewId}")
-    public ResponseEntity<Review> updateReview(@PathVariable Long companyId,
+    public ResponseEntity<String> updateReview(@PathVariable Long companyId,
                                                @PathVariable Long reviewId,
                                                @RequestBody Review review){
-        return new ResponseEntity<>(reviewService.updateReview(companyId, reviewId, review), HttpStatus.OK);
+        if(reviewService.updateReview(reviewId, companyId, review)) {
+            return new ResponseEntity<>("Review has been updated", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Review not updated", HttpStatus.BAD_REQUEST);
+        }
     }
 }
