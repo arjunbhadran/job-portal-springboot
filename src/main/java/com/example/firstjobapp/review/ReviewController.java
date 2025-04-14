@@ -32,4 +32,16 @@ public class ReviewController {
         return new ResponseEntity<>(reviewService.getReviewById(companyId, reviewId), HttpStatus.OK);
     }
 
+    @DeleteMapping("/admin/companies/{companyId}/reviews/{reviewId}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
+        String status=reviewService.deleteReview(reviewId);
+        return new ResponseEntity<>(status, HttpStatus.OK);
+    }
+
+    @PutMapping("/admin/companies/{companyId}/reviews/{reviewId}")
+    public ResponseEntity<Review> updateReview(@PathVariable Long companyId,
+                                               @PathVariable Long reviewId,
+                                               @RequestBody Review review){
+        return new ResponseEntity<>(reviewService.updateReview(companyId, reviewId, review), HttpStatus.OK);
+    }
 }

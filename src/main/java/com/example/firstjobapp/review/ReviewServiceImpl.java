@@ -20,6 +20,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private CompanyService companyService;
 
+    @Override
     public List<Review> getAllReviews(Long companyId) {
         List<Review> reviews = reviewRepository.findAll();
         List<Review> companySpecific=new ArrayList<>();
@@ -36,6 +37,7 @@ public class ReviewServiceImpl implements ReviewService {
         * JPA automatically generates the SQL query for it.*/
     }
 
+    @Override
     public Review getReviewById(Long companyId,Long reviewId) {
         List<Review> reviewsByCompany=this.getAllReviews(companyId);
         for(Review review : reviewsByCompany) {
@@ -46,6 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
+    @Override
     public Boolean createReview(Long companyId,Review review) {
         Company company=companyService.getCompanyById(companyId);
         if(company!=null){
@@ -56,6 +59,7 @@ public class ReviewServiceImpl implements ReviewService {
         return false;
     }
 
+    @Override
     public String deleteReview(Long reviewId) {
         Optional<Review> review=reviewRepository.findById(reviewId);
         if(review.isPresent()){
@@ -66,7 +70,8 @@ public class ReviewServiceImpl implements ReviewService {
         }
     }
 
-    public Review updateReview(Review review,Long reviewId) {
+    @Override
+    public Review updateReview(Long companyId, Long reviewId, Review review) {
         Optional<Review> review1=reviewRepository.findById(reviewId);
         if(review1.isPresent()){
             Review updatedReview=review1.get();
