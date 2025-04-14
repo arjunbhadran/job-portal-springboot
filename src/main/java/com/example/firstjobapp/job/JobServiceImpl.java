@@ -1,5 +1,7 @@
 package com.example.firstjobapp.job;
 
+import com.example.firstjobapp.company.Company;
+import com.example.firstjobapp.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.Optional;
 public class JobServiceImpl implements JobService {
     @Autowired
     JobRepository jobRepository;
+
+    @Autowired
+    private CompanyService companyService;
 
     @Override
     public List<Job> getAlljobs(){
@@ -28,7 +33,13 @@ public class JobServiceImpl implements JobService {
     }
     @Override
     public void createJob(Job job) {
-        jobRepository.save(job);
+        Company company = companyService.getCompanyById(job.getCompany().getCompanyId());
+        if(company!=null){
+            job.setCompany(company);
+            jobRepository.save(job);
+        }else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
     @Override
     public String deleteJob(Long id){
