@@ -197,38 +197,3 @@ job-portal-springboot/
 └── README.md
 ```
 
-
-## 🚧 Roadmap
-
-- Mobile application integration
-- Advanced analytics dashboard
-- AI-powered job matching
-- Integrated messaging system
-- Video interview platform
-
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-Project Link: [https://github.com/yourusername/job-portal-springboot](https://github.com/yourusername/job-portal-springboot)
-
----
-
-<p>
-  Made with ❤️ by Your Team Name
-</p>
-<div>⁂</div>
-
-[^1]: https://pplx-res.cloudinary.com/image/upload/v1744634433/user_uploads/cKHhAQsNzveiiND/Screenshot-2025-04-14-at-6.10.06-PM.jpg
-
