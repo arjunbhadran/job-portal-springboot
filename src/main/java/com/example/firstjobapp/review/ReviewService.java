@@ -7,5 +7,5 @@ public interface ReviewService {
     Review getReviewById(Long companyId,Long reviewId);
     Boolean createReview(Long companyId,Review review);
     Boolean updateReview(Long companyId, Long reviewId, Review review);
-    String deleteReview(Long reviewId);
+    String deleteReview(Long companyId,Long reviewId);
 }

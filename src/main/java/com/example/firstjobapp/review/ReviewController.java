@@ -34,7 +34,7 @@ public class ReviewController {
 
     @DeleteMapping("/admin/companies/{companyId}/reviews/{reviewId}")
     public ResponseEntity<String> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
-        String status=reviewService.deleteReview(reviewId);
+        String status=reviewService.deleteReview(companyId,reviewId);
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
