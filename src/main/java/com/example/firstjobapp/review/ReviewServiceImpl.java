@@ -68,7 +68,7 @@ public class ReviewServiceImpl implements ReviewService {
             company.getReviews().remove(review);
             companyService.updateCompany(company,companyId);
             reviewRepository.delete(review);
-            return "Review with title"+review.getReviewTitle()+" deleted successfully";
+            return "Review with title: "+review.getReviewTitle()+" deleted successfully";
         }else{
             return "Review not found";
         }
